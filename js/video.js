@@ -1,25 +1,21 @@
 var video;
 
 function getVid(){
-	video = document.querySelector("#myVideo"); 
+	video = document.querySelector("#myVideo");
+	//video.controls = true;
+	//console.log("Video Control On")
 }
 
 function playVid() { 
 	console.log("Play Video");
 video.play();
 	console.log(video)
-video.loop = true;
-	console.log("Video Looping Active")
+//video.loop = true;
+	//console.log("Video Looping Active")
 let vol = document.querySelector("#volumeSlider").value;
 vol.volume = video.volume*100+"%";
 		console.log("Volume starts at "+vol+"%");
 document.getElementById("volume").innerHTML = vol;
-video.controls = true;
-	console.log("Video Control On")
-if (this.loop){
-	video.playbackRate = 1;
-}
-
 } 
 
 function pauseVid() { 
@@ -44,7 +40,13 @@ console.log("Speed is "+ (video.playbackRate*100) + "%");
 } 
 
 function skipAhead() {
+	if (video.currentTime > 596.458){
+		video.currentTime = 0;
+		video.playbackRate = 1;
+	}
+	else {
 	video.currentTime+= 60;
+	}
 		console.log("Current location is "+ video.currentTime);
 } 
 
